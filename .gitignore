@@ -1,0 +1,21 @@
+# Claude Code local settings (machine-specific, may contain permissions/secrets)
+.claude/settings.local.json
+
+# OneDrive / Windows служебные файлы
+Thumbs.db
+desktop.ini
+*.lnk
+~$*
+.DS_Store
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Временные файлы
+*.tmp
+*.bak
+*.log
