@@ -2,7 +2,9 @@ name: Notify subscribers on new digest
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - 'claude/**'
     paths:
       - 'news-archive/digest-*.md'
 
@@ -27,7 +29,7 @@ jobs:
           DATE=$(basename "$FILE" .md | sed 's/digest-//')
           REPO_URL="https://github.com/${{ github.repository }}"
           COMMIT_URL="${REPO_URL}/commit/${{ github.sha }}"
-          FILE_URL="${REPO_URL}/blob/main/${FILE}"
+          FILE_URL="${REPO_URL}/blob/${{ github.ref_name }}/${FILE}"
 
           # Extract summary block (lines 1..first '## Кейсы' or first 40 lines)
           awk 'NR==1 || /^## /{c++} c<2 {print}' "$FILE" | head -40 > summary_block.txt
